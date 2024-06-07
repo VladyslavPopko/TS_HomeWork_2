@@ -1,4 +1,4 @@
-type lecturerType = {
+type LecturerType = {
   name: string;
   surname: string;
   position: string;
@@ -12,7 +12,7 @@ class School {
   // implement 'add area', 'remove area', 'add lecturer', and 'remove lecturer' methods
 
   _areas: Area[] = [];
-  _lecturers: lecturerType[] = []; // Name, surname, position, company, experience, courses, contacts
+  _lecturers: LecturerType[] = []; // Name, surname, position, company, experience, courses, contacts
 
   get areas(): typeof this._areas {
     return this._areas;
@@ -30,11 +30,11 @@ class School {
     this._areas = this._areas.filter(area => area._name !== inputArea._name);
   }
 
-  addLecturer(lecturer: lecturerType): void {
+  addLecturer(lecturer: LecturerType): void {
     this._lecturers.push(lecturer);
   }
 
-  removeLecturer(inputLecturer: lecturerType): void {
+  removeLecturer(inputLecturer: LecturerType): void {
     this._lecturers = this._lecturers.filter(lecturer => lecturer.name !== inputLecturer.name);
   }
 }
@@ -97,8 +97,8 @@ class Group {
     this._status = status;
   }
 
-  showPerformance(): object[] {
-    const sortedStudents: object[] = this._students.toSorted(
+  showPerformance(): Student[] {
+    const sortedStudents: Student[] = this._students.toSorted(
       (a: Student, b: Student) => b.getPerformanceRating() - a.getPerformanceRating()
     );
     return sortedStudents;
